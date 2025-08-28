@@ -16,7 +16,7 @@ async def login():
     )
 
 # Run the login on startup
-asyncio.run(login())
+# asyncio.run(login())
 
 @app.route('/tweet', methods=['POST'])
 async def post_tweet():
@@ -27,8 +27,9 @@ async def post_tweet():
             return jsonify({'error': 'No text provided'}), 400
 
         # Post a tweet using twikit
-        tweet = await client.create_tweet(tweet_text)
-        return jsonify({'success': True, 'tweet_id': tweet.id}), 200
+        # tweet = await client.create_tweet(tweet_text)
+        # return jsonify({'success': True, 'tweet_id': tweet.id}), 200
+        return jsonify({'success': True, 'message': tweet_text}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
